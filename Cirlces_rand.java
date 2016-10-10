@@ -7,8 +7,9 @@ import java.util.Scanner;
 import java.awt.Color;
 
 
-public class Cirlces_rand extends Applet{
+public class Circles_rand extends Applet{    //fixed spelling mistake cirlces* ~brendan
 
+        @Override //added override suggested by ide ~brendan
 	public void paint(Graphics g) {
 	     
 		Scanner askNum = new Scanner(System.in);
@@ -39,21 +40,41 @@ public class Cirlces_rand extends Applet{
 		
 	
 		g.setColor(colorC);
-		g.fillOval(dFirst, dSecond, dThird, dThird);
+                //calls new draw method, description below ~brendan
+		drawSymbol(g,dFirst, dSecond, dThird, dThird);
 		
 		
 		
-		numCirc = numCirc + 1;
+		numCirc++; //shorthand ~brendan
 		}
-		
-		/* public void init(){	
-			Scanner askNum = new Scanner(System.in);
-		     System.out.println("Pick the number of circles you want!");
-		     double gotNum = askNum.nextDouble();
-		     
-		     
-		}*/
 	}
+        
+        
+//        This method attempts to take randomly generated numbers and convert them
+//        into a visual representation, of the infinite variable that is my love
+//        for mishka <3 ~brendan
+        
+        public void drawSymbol(Graphics g, int x, int y, int width, int height) {
+                int[] triangleX = {
+                        x - 2*width/18,
+                        x + width + 2*width/18,
+                        (x - 2*width/18 + x + width + 2*width/18)/2};
+                int[] triangleY = { 
+                        y + height - 2*height/3, 
+                        y + height - 2*height/3, 
+                        y + height};
+                g.fillOval(
+                        x - width/7,
+                        y, 
+                        width/2 + width/6 + width/10, 
+                        height/2); 
+                g.fillOval(
+                        x + width/2 - width/8,
+                        y,
+                        width/2 + width/6 + width/10,
+                        height/2);
+                g.fillPolygon(triangleX, triangleY, triangleX.length);
+        }
+        
 }
-
 
